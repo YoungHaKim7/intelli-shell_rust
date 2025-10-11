@@ -1,0 +1,3 @@
+# The git checkout command in Git serves multiple purposes related to navigating and manipulating the state of your repository. While git switch and git restore have largely replaced its functionality for switching branches and restoring files respectively, git checkout remains a valid and powerful command.
+git checkout 
+
