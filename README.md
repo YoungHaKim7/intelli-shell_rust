@@ -8,6 +8,19 @@
 cargo binstall intelli-shell --locked
 ```
 
+# backup(파일로 만들어서 관리하면 될듯)
+
+- export
+```
+intelli-shell export my_commands.bak
+```
+
+- import
+  - https://lasantosr.github.io/intelli-shell/reference/import.html
+```
+intelli-shell import my_commands.bak
+```
+
 # Core Hotkeys
 - https://lasantosr.github.io/intelli-shell/guide/basic_usage.html#core-hotkeys
 - By default, IntelliShell sets up several hotkeys. These are the primary ways you will interact with the tool.
