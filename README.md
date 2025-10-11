@@ -1,6 +1,12 @@
 # intelli-shell_rust
 - Like IntelliSense, but for shells 
   - https://github.com/lasantosr/intelli-shell
+
+# install
+
+```bash
+cargo binstall intelli-shell --locked
+```
  
 # help & doc
 - https://lasantosr.github.io/intelli-shell/
