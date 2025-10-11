@@ -1,5 +1,218 @@
+# cargo miri
+MIRIFLAGS="-Zmiri-disable-stacked-borrows" cargo miri run
+
+# cargo asm
+cargo asm {{PROJECT_NAME}}::{{METHOD}}
+
+# Check security vulnerabilities in dependencies
+cargo audit
+
+# Audit and suppress warnings for certain crates
+cargo audit --allow-warnings
+
+# Audit with a custom advisory database URL
+cargo audit --database {{url}}
+
+# Audit with a custom advisory database file
+cargo audit --db-file {{path}}
+
+# Audit and update the advisory database
+cargo audit --fetch
+
+# Audit with JSON output
+cargo audit --format=json
+
+# Audit ignoring certain advisories
+cargo audit --ignore {{advisory_id}}
+
+# Audit and display license information
+cargo audit --licenses
+
+# Audit a specific lockfile
+cargo audit --lockfile {{path_to_lockfile}}
+
+# Audit and generate a report in a specific format
+cargo audit --output {{file_path}}
+
+# Audit and check for informational advisories
+cargo audit --quiet
+
+# Audit and filter by severity level
+cargo audit --severity {{high|medium|low|info}}
+
+# Audit and display statistics
+cargo audit --stats
+
+# Audit and display target-specific vulnerabilities
+cargo audit --target {{target_triple}}
+
+# Audit and check for unmaintained packages
+cargo audit --unmaintained
+
+# Audit and display vulnerability details
+cargo audit --verbose
+
+# Audit and show only vulnerable crates
+cargo audit --vulnerable
+
+# final review(cargo check)
+cargo check --all-features --all-targets --all
+
+# final review(cargo clippy)
+cargo clippy --all-features --all-targets -- -D warnings
+
+# cargo clippy emit jsonfile(savefile : ./target/clippy.json)
+cargo clippy --message-format=json --all-features --all-targets -- -D warnings > target/clippy.json
+
+# macro show(cargo expand)
+cargo expand
+
+# cargo expand(test --lib)
+cargo expand --lib --tests
+
+# Format all source code in the project
+cargo fmt
+
+# Format source code and print diff of changes
+cargo fmt -- --color=always
+
+# Format source code and print files that would be modified
+cargo fmt -- --emit=files
+
+# Format all packages in the workspace
+cargo fmt --all
+
+# final review(fmt)
+cargo fmt --all -- --check
+
+# Format source code and check if formatting is needed
+cargo fmt --check
+
+# Format source code with verbose output
+cargo fmt --verbose
+
+# Format source code only for specified package
+cargo fmt -p {{package_name}}
+
+# Format only the specified files
+cargo fmt {{file1}} {{file2}}
+
+# 8 thread test
+cargo miri nextest run -j8
+
+# target, test
+cargo miri run --target x86_64-unknown-linux-gnu
+
+# target tests
+cargo miri run --target {{TARGET}}
+
+# night miri test
+cargo miri test
+
+# final review(test nextest)
+cargo nextest run --all-features --no-fail-fast --workspace --no-capture
+
 # show print) A next-generation test runner for Rust.
 cargo nextest run --nocapture
+
+# (optimization)cargo run --release
+cargo run --release
+
+#
+cargo run -Zbuild-std --target x86_64-unknown-linux-gnu
+
+# emit asm file
+cargo rustc -- --emit asm=target/{{PROJECT_NAME}}.s
+
+# emit llvm-ir file
+cargo rustc -- --emit llvm-ir=target/{{PROJECT_NAME}}.ll
+
+# emit hir file
+cargo rustc -- -Zunpretty=hir > target/{{PROJECT_NAME}}.hir
+
+# emit mir file
+cargo rustc -- -Zunpretty=mir > target/{{PROJECT_NAME}}.mir
+
+# optimized assembly
+cargo rustc --release -- --emit asm > target/{{PROJECT_NAME}}.s
+
+# Run all tests in the project
+cargo test
+
+# Run tests with output from test cases
+cargo test -- --nocapture
+
+# Run tests with all features enabled
+cargo test --all-features
+
+# Run all tests including benchmarks
+cargo test --bench
+
+# Run doctests only
+cargo test --doc
+
+# Run a single test by exact name
+cargo test --exact {{test_name}}
+
+# Run tests for examples
+cargo test --example {{example_name}}
+
+# Run tests and stop at first failure
+cargo test --fail-fast
+
+# Run tests with specific features enabled
+cargo test --features {{feature_names}}
+
+# Run tests and generate JSON output
+cargo test --format json
+
+# Run tests and ignore cached results
+cargo test --fresh
+
+# Run unit tests only (excluding doctests, examples, and benchmarks)
+cargo test --lib
+
+# Run tests with default features disabled
+cargo test --no-default-features
+
+# Run tests and ignore failures (continue on error)
+cargo test --no-fail-fast
+
+# Run tests but only show failed tests
+cargo test --quiet
+
+# Run tests and compile in release mode
+cargo test --release
+
+# Run tests with specific target triple
+cargo test --target {{target_triple}}
+
+# Run integration tests only
+cargo test --test {{integration_test_name}}
+
+# Run tests with a specific number of threads
+cargo test --test-threads={{num_threads}}
+
+# Run tests with verbose output
+cargo test --verbose
+
+# Run tests with unstable features
+cargo test -Z {{unstable_feature}}
+
+# Run tests in a specific package
+cargo test -p {{package_name}}
+
+# Run tests with specific pattern
+cargo test {{test_name}}
+
+# cargo watch(simple only run)
+cargo watch -x 'run'
+
+# cargo watch(check & test & run)
+cargo watch -x check -x test -x run
+
+# (nightly linuxOS)clang sanitize(ASan=address / LSan=leak / TSan=thread / MSan=memory / UBSan=undefined)
+export RUSTFLAGS=-Zsanitizer={{SAN}} RUSTDOCFLAGS=-Zsanitizer={{SAN}}
 
 # Add all changes to the staging area, including deleted files
 git add -A
@@ -534,4 +747,7 @@ git tag {{tag-name}}
 
 # Create a new tag from a specific commit
 git tag {{tag-name}} {{commit-hash}}
+
+# hex view("rg -i <search>" | "grep -rni <search>")
+xxd -c 16 ./target/debug/{{PROJECT_NAME}} > ./target/debug/hex_print.txt
 
