@@ -7,6 +7,20 @@
 ```bash
 cargo binstall intelli-shell --locked
 ```
+
+# Core Hotkeys
+- https://lasantosr.github.io/intelli-shell/guide/basic_usage.html#core-hotkeys
+- By default, IntelliShell sets up several hotkeys. These are the primary ways you will interact with the tool.
+
+- Search `Ctrl`+`Space`: This is your main entry point. It opens an interactive search UI to find your bookmarked commands. If you have text on the command line, it will be used as the initial search query.
+
+- Bookmark `Ctrl`+`B`: When you've typed a command you want to save, this key opens a UI to bookmark it. The current text on your command line will be pre-filled as the command to be saved.
+
+- Fix Command `Ctrl`+`X`: When a command fails, press the up arrow to recall it, then use this key to let AI analyze the command and the error message to suggest a working version.
+
+- Variable Replace `Ctrl`+`L`: If the command on your line contains `{{variables}}`, this key opens the variable replacement UI to fill them in without needing to save the command first.
+
+- Clear Line `Esc`: As a convenience, this key is bound to clear the entire command line. This can be disabled if it conflicts with your existing terminal habits.
  
 # help & doc
 - https://lasantosr.github.io/intelli-shell/
