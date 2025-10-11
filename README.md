@@ -1,19 +1,43 @@
 # link
 
+- [(GeekNews에 올라온 한글 뉴스251012IntelliShell - 쉘을 위한 IntelliSense](#intellishell---쉘을-위한-intellisense)
+  - [(Github Link) Like IntelliSense, but for shells](#intelli-shell_rust)
+- [Install](#install)
+- [backup 파일 관리]
+  - [export & import](#backup파일로-만들어서-관리하면-될듯)
+
+- [핵심 단축키 빨리 익혀서 빨리 사용하자Core Hotkeys](#core-hotkeys)
+  - [자세한 문서 더 자세히 보고 싶으면 여기](#help--doc)
+
 
 <hr />
 
-# intelli-shell_rust
+# intelli-shell_rust[|🔝|](#link)
 - Like IntelliSense, but for shells 
   - https://github.com/lasantosr/intelli-shell
 
-# install
+# install[|🔝|](#link)
+
+- bash
+
+```
+# For sh-compatible shells on Linux/macOS/Windows (Bash, Zsh, Fish, Nu, Git Bash)
+curl -sSf https://raw.githubusercontent.com/lasantosr/intelli-shell/main/install.sh | sh  
+```
+
+- Rust설치가 되어 있다면 이걸로(binstall먼저 설치해야함)
+
 
 ```bash
+# 사전설치
+cargo install cargo-binstall
+
+# and
+
 cargo binstall intelli-shell --locked
 ```
 
-# backup(파일로 만들어서 관리하면 될듯)
+# backup(파일로 만들어서 관리하면 될듯)[|🔝|](#link) 
 
 - export
 ```
@@ -26,7 +50,7 @@ intelli-shell export my_commands.bak
 intelli-shell import my_commands.bak
 ```
 
-# Core Hotkeys
+# Core Hotkeys[|🔝|](#link)
 - https://lasantosr.github.io/intelli-shell/guide/basic_usage.html#core-hotkeys
 - By default, IntelliShell sets up several hotkeys. These are the primary ways you will interact with the tool.
 
@@ -40,7 +64,7 @@ intelli-shell import my_commands.bak
 
 - Clear Line `Esc`: As a convenience, this key is bound to clear the entire command line. This can be disabled if it conflicts with your existing terminal habits.
  
-# help & doc
+# help & doc[|🔝|](#link)
 - https://lasantosr.github.io/intelli-shell/
 
 ```bash
@@ -111,7 +135,7 @@ Examples:
 
 ```
 
-- claude로 만듬
+- claude로 만듬[|🔝|](#link)
 
 ```
 I've successfully added 100 additional git commands with descriptions to your my_commands.bak file. The
@@ -131,7 +155,7 @@ I've successfully added 100 additional git commands with descriptions to your my
   actual git command below it.
 ```
 
-# **[IntelliShell - 쉘을 위한 IntelliSense](<https://news.hada.io/topic?id=23553&utm_source=discord&utm_medium=bot&utm_campaign=1480>)**
+# **[IntelliShell - 쉘을 위한 IntelliSense](<https://news.hada.io/topic?id=23553&utm_source=discord&utm_medium=bot&utm_campaign=1480>)**[|🔝|](#link)
 - 쉘 명령어를 **구조화된 스니펫과 템플릿**으로 관리할 수 있게 해주는 **지능형 명령 라이브러리 도구**  
   - 단순히 이전 명령을 찾는 것이 아니라, **반복되는 작업을 자동화**하고 **재사용 가능한 명령 모음집**을 구성  
   - 쉘 명령을 북마크하거나 AI를 이용해 자동으로 수정·생성할 수 있음  
