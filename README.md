@@ -1,3 +1,8 @@
+# link
+
+
+<hr />
+
 # intelli-shell_rust
 - Like IntelliSense, but for shells 
   - https://github.com/lasantosr/intelli-shell
@@ -125,3 +130,9 @@ I've successfully added 100 additional git commands with descriptions to your my
   Each command follows the format you specified with a # comment describing the command's purpose and the
   actual git command below it.
 ```
+
+# **[IntelliShell - 쉘을 위한 IntelliSense](<https://news.hada.io/topic?id=23553&utm_source=discord&utm_medium=bot&utm_campaign=1480>)**
+- 쉘 명령어를 **구조화된 스니펫과 템플릿**으로 관리할 수 있게 해주는 **지능형 명령 라이브러리 도구**  
+  - 단순히 이전 명령을 찾는 것이 아니라, **반복되는 작업을 자동화**하고 **재사용 가능한 명령 모음집**을 구성  
+  - 쉘 명령을 북마크하거나 AI를 이용해 자동으로 수정·생성할 수 있음  
+- **Bash**, …
