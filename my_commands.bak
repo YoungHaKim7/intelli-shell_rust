@@ -1,3 +1,537 @@
+# show print) A next-generation test runner for Rust.
+cargo nextest run --nocapture
+
+# Add all changes to the staging area, including deleted files
+git add -A
+
+# Add all files to the staging area interactively
+git add -i
+
+# Add a file to the staging area with a message
+git add -p {{file}}
+
+# Add all files that have been modified
+git add -u
+
+# Add all changes to the staging area
+git add .
+
+# Add a file to the staging area
+git add {{file}}
+
+# Apply a patch file and add the changes to the index
+git apply --cached {{patch-file}}
+
+# Apply a patch file
+git apply {{patch-file}}
+
+#
+git bisect bad
+
+#
+git bisect good {{commit}}
+
+# End a bisect session
+git bisect reset
+
+# Find commits that introduced or fixed a bug
+git bisect start
+
+# Show who changed what and when in a file
+git blame {{file}}
+
+# List all branches
+git branch
+
+# Set the upstream branch for a local branch
+git branch --set-upstream-to={{remote}}/{{branch}} {{local-branch}}
+
+# Unset the upstream branch for a local branch
+git branch --unset-upstream {{branch}}
+
+# Force delete a local branch
+git branch -D {{branch-name}}
+
+# List all local and remote-tracking branches
+git branch -a
+
+# List all branches with the last commit on each, including remote branches
+git branch -a -v
+
+# List all branches with the last commit on each, including remote branches and the upstream branch
+git branch -a -vv
+
+# Copy a branch to a new name
+git branch -c {{branch-name}} {{new-name}}
+
+# Delete a local branch
+git branch -d {{branch-name}}
+
+# Move a branch to a new name
+git branch -m {{branch-name}} {{new-name}}
+
+# Rename the current branch
+git branch -m {{new-name}}
+
+# Rename a specific branch
+git branch -m {{old-name}} {{new-name}}
+
+# List all remote branches
+git branch -r
+
+# List all branches with the last commit on each
+git branch -v
+
+# Show the tracking relationship between local and remote branches
+git branch -vv
+
+# Create a new branch
+git branch {{branch-name}}
+
+# The git checkout command in Git serves multiple purposes related to navigating and manipulating the state of your repository. While git switch and git restore have largely replaced its functionality for switching branches and restoring files respectively, git checkout remains a valid and powerful command.
+git checkout
+
 # The git checkout command in Git serves multiple purposes related to navigating and manipulating the state of your repository. While git switch and git restore have largely replaced its functionality for switching branches and restoring files respectively, git checkout remains a valid and powerful command.
 git checkout 
+
+# Detach HEAD and switch to a specific commit
+git checkout --detach {{commit-hash}}
+
+# Create a new orphan branch
+git checkout --orphan {{branch-name}}
+
+#
+git checkout -b {{branch-name}} {{commit-hash}}
+
+# Create a new branch from a tag
+git checkout -b {{branch-name}} {{tag-name}}
+
+#
+git checkout {{commit-hash}}
+
+# Switch to a specific tag
+git checkout {{tag-name}}
+
+# Cherry-pick a commit without creating a new commit
+git cherry-pick --no-commit {{commit-hash}}
+
+# Cherry-pick a commit onto the current branch
+git cherry-pick {{commit-hash}}
+
+# Clean up untracked files
+git clean
+
+# Clean up untracked files and directories
+git clean -fd
+
+# Create a new repository from a bare template
+git clone --bare {{repository-url}} {{directory}}
+
+# Create a new repository from a bare repository
+git clone {{bare-repository-url}} {{directory}}
+
+# Clone a remote repository to your local machine
+git clone {{repository-url}}
+
+# Amend the last commit
+git commit --amend
+
+# Stage and commit all changes with a message
+git commit -am "Commit message"
+
+# Commit staged changes with a message
+git commit -m "Commit message"
+
+# Commit staged changes with a detailed message
+git commit -m "Subject line" -m "Detailed description"
+
+# Get a configuration option
+git config --get {{option}}
+
+# Get a global configuration option
+git config --global --get {{option}}
+
+# Enable color output
+git config --global color.ui auto
+
+# Disable color output
+git config --global color.ui false
+
+# Set the default editor
+git config --global core.editor "editor"
+
+# Set the default branch name
+git config --global init.defaultBranch main
+
+# Set the default merge behavior
+git config --global merge.ff only
+
+# Set the default pull behavior
+git config --global pull.rebase false
+
+# Set the default push behavior
+git config --global push.default simple
+
+# Set the global user email
+git config --global user.email "your.email@example.com"
+
+# Set the global user name
+git config --global user.name "Your Name"
+
+# Set a global configuration option
+git config --global {{option}} {{value}}
+
+# List all configuration options
+git config --list
+
+# Set the user email for a repository
+git config user.email "your.email@example.com"
+
+# Set the user name for a repository
+git config user.name "Your Name"
+
+# Set a configuration option
+git config {{option}} {{value}}
+
+# Show differences between the working directory and the staging area
+git diff
+
+# Show changes in a file between the working directory and the index
+git diff -- {{file}}
+
+# Show changes in a file between the index and the most recent commit
+git diff --cached -- {{file}}
+
+# Show the changes between the index and a specific commit
+git diff --cached {{commit}}
+
+# Show differences between the staging area and the most recent commit
+git diff --staged
+
+# Show the changes between the working directory and the index
+git diff HEAD
+
+# Show differences between two branches
+git diff {{branch1}} {{branch2}}
+
+# Show differences between two commits
+git diff {{commit1}} {{commit2}}
+
+# Show changes in a file between two commits
+git diff {{commit1}} {{commit2}} -- {{file}}
+
+# Show the changes between the working directory and a specific commit
+git diff {{commit}}
+
+# Fetch changes from all remote repositories
+git fetch --all
+
+# Fetch changes from a remote repository
+git fetch {{remote}}
+
+# Create a patch file for a range of commits
+git format-patch {{commit1}}..{{commit2}}
+
+# Create a patch file for a commit
+git format-patch {{commit}}
+
+# Initialize a new Git repository in the current directory
+git init
+
+# Show the commit history
+git log
+
+# Show the commit history for a specific directory
+git log -- {{directory}}
+
+# Show the commit history for a specific author
+git log --author={{author}}
+
+# Show the commit history for a specific file
+git log --follow {{file}}
+
+# Show the commit history with a graph of branches
+git log --graph --full-history --all --color
+
+# Show the commit history with a graph of branches and merges
+git log --graph --oneline
+
+# Show the commit history for commits that match a regular expression
+git log --grep="search-pattern"
+
+# Show the commit history in a compact format
+git log --oneline
+
+# Show the commit history in a custom format
+git log --pretty=format:"%h - %an, %ar : %s"
+
+# Show the commit history for a specific time period
+git log --since="2023-01-01" --until="2023-12-31"
+
+# Show the commit history with statistics
+git log --stat
+
+# Show the commit history for a specific function in a file
+git log -L :{{function-name}}:{{file}}
+
+# Show the commit history for a specific line in a file
+git log -L {{start-line}},{{end-line}}:{{file}}
+
+# Show the commit history for commits that changed a specific string
+git log -S "search-string"
+
+# Abort a merge in progress
+git merge --abort
+
+# Continue a merge after resolving conflicts
+git merge --continue
+
+# Edit the merge message
+git merge --edit
+
+# Merge a branch into the current branch and create a merge commit
+git merge --no-ff -m "Merge message" {{branch-name}}
+
+# Merge a branch without creating a merge commit
+git merge --no-ff {{branch-name}}
+
+# Squash a branch into a single commit
+git merge --squash {{branch-name}}
+
+# Merge a branch into the current branch
+git merge {{branch-name}}
+
+# Check if a specific commit is an ancestor of another commit
+git merge-base --is-ancestor {{commit1}} {{commit2}}
+
+# Find the common ancestor of two commits
+git merge-base {{commit1}} {{commit2}}
+
+# Move or rename a file
+git mv {{old-file}} {{new-file}}
+
+# Pull changes from a remote repository and rebase them
+git pull --rebase {{remote}} {{branch}}
+
+# Pull changes from a remote repository and merge them
+git pull {{remote}} {{branch}}
+
+# Push all branches and set the upstream branch for each
+git push --all --set-upstream {{remote}}
+
+# Push all branches to a remote repository
+git push --all {{remote}}
+
+# Force push to a remote repository
+git push --force {{remote}} {{branch}}
+
+# Push the current branch and set the upstream branch, even if it already exists
+git push --set-upstream {{remote}} {{branch}}
+
+# Push tags to a remote repository
+git push --tags
+
+# Push the current branch to a remote repository
+git push -u {{remote}} {{branch}}
+
+#
+git push {{remote}} --delete {{branch-name}}
+
+# Delete a remote branch
+git push {{remote}} --delete {{branch}}
+
+# Delete a remote tag
+git push {{remote}} --delete {{tag-name}}
+
+# Force push a tag to a remote repository
+git push {{remote}} --force {{tag-name}}
+
+# Push changes to a remote repository
+git push {{remote}} {{branch}}
+
+# Push a specific tag to a remote repository
+git push {{remote}} {{tag-name}}
+
+# Abort a rebase in progress
+git rebase --abort
+
+# Continue a rebase after resolving conflicts
+git rebase --continue
+
+# Edit the current commit in a rebase
+git rebase --edit
+
+# Rebase the current branch onto another branch, preserving the current commit and all previous commits
+git rebase --onto {{new-base}} HEAD~{{n}}
+
+# Rebase the current branch onto another branch, preserving the current commit
+git rebase --onto {{new-base}} {{old-base}} HEAD
+
+# Rebase the current branch onto another branch, ignoring the current commit
+git rebase --onto {{new-base}} {{old-base}} {{branch}}
+
+# Skip the current commit in a rebase
+git rebase --skip
+
+# Rebase the current branch onto another branch, preserving the current commit and all previous commits, but fixing the first n commits
+git rebase -i --autosquash --exec "git commit --amend --no-edit" HEAD~{{n}}
+
+# Rebase the current branch onto another branch, preserving the current commit and all previous commits, but dropping the first n commits and adding a new commit
+git rebase -i --autosquash --exec "git commit --amend --no-edit" HEAD~{{n}}~1
+
+# Rebase the current branch onto another branch, preserving the current commit and all previous commits, but squashing the first n commits and adding a new commit
+git rebase -i --autosquash --exec "git commit --amend --no-edit" HEAD~{{n}}~2
+
+# Rebase the current branch onto another branch, preserving the current commit and all previous commits, but squashing the first n commits
+git rebase -i --autosquash HEAD~{{n}}
+
+# Rebase the current branch onto another branch, preserving the current commit and all previous commits, but dropping the first n commits
+git rebase -i --onto {{new-base}} HEAD~{{n}}
+
+# Rebase the current branch onto another branch, preserving the current commit and all previous commits, but editing the first n commits
+git rebase -i HEAD~{{n}}
+
+# Rebase the current branch onto another branch, preserving merges and reordering commits
+git rebase -i {{branch-name}}
+
+# Rebase the current branch onto another branch, preserving merges
+git rebase -p {{branch-name}}
+
+# Rebase the current branch onto another branch
+git rebase {{branch-name}}
+
+# Show the reflog for the current branch
+git reflog
+
+# Show the reflog for all branches
+git reflog show --all
+
+# Show the reflog for a specific branch
+git reflog show {{branch}}
+
+# List all remote repositories
+git remote -v
+
+# Add a remote repository
+git remote add {{name}} {{url}}
+
+# Remove a remote repository
+git remote remove {{name}}
+
+# Rename a remote repository
+git remote rename {{old-name}} {{new-name}}
+
+# Reset the working directory to the most recent commit
+git reset --hard
+
+# Reset the working directory to a specific commit
+git reset --hard {{commit}}
+
+# Remove all files from the staging area
+git reset HEAD
+
+# Remove a file from the staging area
+git reset HEAD {{file}}
+
+# Reset the index to a specific commit
+git reset {{commit}}
+
+# Restore a file to the state in a specific commit
+git restore --source={{commit}} {{file}}
+
+# Restore a file to the state in the staging area
+git restore --staged {{file}}
+
+# Restore a file to the state in the most recent commit
+git restore {{file}}
+
+# Count the number of commits
+git rev-list --count HEAD
+
+# Show the upstream branch for a local branch
+git rev-parse --abbrev-ref {{branch}}@{upstream}
+
+# Show the hash of the current commit
+git rev-parse --short HEAD
+
+# Show the most recent commit
+git rev-parse HEAD
+
+# Remove a file from the working directory and staging area
+git rm {{file}}
+
+# Show the changes introduced in the most recent commit
+git show
+
+# Show the changes introduced in a specific commit
+git show {{commit-hash}}
+
+# Show the changes made to a file in a specific commit
+git show {{commit-hash}}:{{file}}
+
+# Temporarily save changes in the working directory
+git stash
+
+# Apply a specific stash
+git stash apply stash@{n}
+
+# Clear all stashes
+git stash clear
+
+# Drop a specific stash
+git stash drop stash@{n}
+
+# List all stashes
+git stash list
+
+# Apply the most recent stash
+git stash pop
+
+# Create a stash with a message
+git stash save "Stash message"
+
+# Check the status of your working directory and staging area
+git status
+
+# Show the repository status with branch information
+git status --branch
+
+# Show the repository status with ignored files
+git status --ignored
+
+# Show the repository status in a short format
+git status --short
+
+# Show the repository status with untracked files
+git status --untracked-files
+
+# Switch to the previous branch
+git switch -
+
+# Create and switch to a new branch
+git switch -c {{branch-name}}
+
+# Switch to a different branch
+git switch {{branch-name}}
+
+# List all tags
+git tag
+
+# Create a tag with a message
+git tag -a {{tag-name}} -m "Tag message"
+
+# Create a tag with a message from a specific commit
+git tag -a {{tag-name}} -m "Tag message" {{commit-hash}}
+
+# Delete a tag
+git tag -d {{tag-name}}
+
+# List all tags with details
+git tag -n
+
+# Create a tag for the current commit
+git tag {{tag-name}}
+
+# Create a new tag from a specific commit
+git tag {{tag-name}} {{commit-hash}}
 

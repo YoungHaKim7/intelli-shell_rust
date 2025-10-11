@@ -105,3 +105,23 @@ Examples:
   intelli-shell completion list -i
 
 ```
+
+- claude로 만듬
+
+```
+I've successfully added 100 additional git commands with descriptions to your my_commands.bak file. The
+  commands cover a wide range of Git functionality including:
+
+  - Basic repository operations (init, clone, status, add, commit)
+  - Branch management (branch, switch, merge, rebase)
+  - History and diff operations (log, diff, show, blame)
+  - Remote repository operations (remote, fetch, pull, push)
+  - Tagging (tag)
+  - Stashing (stash)
+  - Patching (format-patch, apply)
+  - Configuration (config)
+  - Advanced operations (bisect, reflog, cherry-pick)
+
+  Each command follows the format you specified with a # comment describing the command's purpose and the
+  actual git command below it.
+```
