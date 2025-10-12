@@ -799,6 +799,9 @@ lsof -i :{{PORT_No.}}
 # GPU watch NVIDIA
 nvidia-smi
 
+# printf (Unicode(hex))
+printf '\u{{uncode_hex}}\n'
+
 # the pwd command will tell you exactly what the current working directory is.
 pwd
 
