@@ -1,3 +1,6 @@
+# Clang Sanitize(ASan=address / LSan=leak / TSan=thread / MSan=memory / UBSan=undefined (Undefined Behavior)
+/usr/bin/clang-21 -g -fsanitize={{SAN}} -fno-omit-frame-pointer -c {{SOURCE}}
+
 # cargo miri
 MIRIFLAGS="-Zmiri-disable-stacked-borrows" cargo miri run
 
@@ -751,5 +754,3 @@ rustup target list
 # hex view("rg -i <search>" | "grep -rni <search>")
 xxd -c 16 ./target/debug/{{PROJECT_NAME}} > ./target/debug/hex_print.txt
 
-# Clang Sanitize(ASan=address / LSan=leak / TSan=thread / MSan=memory / UBSan=undefined (Undefined Behavior)
-/usr/bin/clang-21 -g -fsanitize={{SAN}} -fno-omit-frame-pointer -c {{SOURCE}}
