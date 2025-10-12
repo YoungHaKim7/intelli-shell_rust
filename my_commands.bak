@@ -221,10 +221,10 @@ cmake -D CMAKE_C_COMPILER=/opt/gcc-15/bin/gcc -G Ninja ..
 export RUSTFLAGS=-Zsanitizer={{SAN}} RUSTDOCFLAGS=-Zsanitizer={{SAN}}
 
 # find(fd)
-fd -g -H '.{{search_file}}}*'
+fd -g -H '.{{search_file}}*'
 
 # find(fd) & delete
-fd -g -H '.{{search_file}}}*' -x rm {} \;
+fd -g -H '.{{search_file}}*' -x rm {} \;
 
 # find & delete
 find . -type f -name "{{delete_file}}" -exec rm {} \;
