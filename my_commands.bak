@@ -226,8 +226,14 @@ cmake -D CMAKE_C_COMPILER=/opt/gcc-15/bin/gcc -G Ninja ..
 # Check Capacity
 df -h
 
+# unicode print
+echo -e '\u{{hexadecimal_digits_unicode_no}}'
+
 # (nightly linuxOS)clang sanitize(ASan=address / LSan=leak / TSan=thread / MSan=memory / UBSan=undefined)
 export RUSTFLAGS=-Zsanitizer={{SAN}} RUSTDOCFLAGS=-Zsanitizer={{SAN}}
+
+# eza(tree) the number is depth
+eza -la -TL2
 
 # find(fd)
 fd -g -H '.{{search_file}}*'
@@ -781,6 +787,9 @@ kill -9 {{PID}}
 # kill program(PID)
 killall {{PROGRAM_PID}}
 
+# make symbol link
+ln -s {{source_link}} {{link_name}}
+
 # Linux Version check
 lsb_release -a
 
@@ -810,6 +819,9 @@ sudo reboot
 
 # Reservation ends in a minute
 sudo shutdown -h 1
+
+# tree (tree)
+tree -L 2
 
 # GPU live (nvidia-smi)
 watch -d -n 0.5 nvidia-smi
