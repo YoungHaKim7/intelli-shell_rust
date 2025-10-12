@@ -4,6 +4,9 @@
 # cargo miri
 MIRIFLAGS="-Zmiri-disable-stacked-borrows" cargo miri run
 
+# the working directory
+basename $(pwd)
+
 # cargo asm
 cargo asm {{PROJECT_NAME}}::{{METHOD}}
 
@@ -219,6 +222,9 @@ cat /etc/os-release
 
 # (C) cmake && ninja
 cmake -D CMAKE_C_COMPILER=/opt/gcc-15/bin/gcc -G Ninja ..
+
+# Check Capacity
+df -h
 
 # (nightly linuxOS)clang sanitize(ASan=address / LSan=leak / TSan=thread / MSan=memory / UBSan=undefined)
 export RUSTFLAGS=-Zsanitizer={{SAN}} RUSTDOCFLAGS=-Zsanitizer={{SAN}}
@@ -766,11 +772,17 @@ git tag {{tag-name}}
 # Create a new tag from a specific commit
 git tag {{tag-name}} {{commit-hash}}
 
+# IP in use now
+ip a
+
 # kill PID
 kill -9 {{PID}}
 
 # kill program(PID)
 killall {{PROGRAM_PID}}
+
+# Linux Version check
+lsb_release -a
 
 # Search for ports you use
 lsof -i :{{PORT_No.}}
@@ -778,11 +790,32 @@ lsof -i :{{PORT_No.}}
 # GPU watch NVIDIA
 nvidia-smi
 
+# the pwd command will tell you exactly what the current working directory is.
+pwd
+
 # aarch64-apple-darwin / x86_64-unknown-linux-gnu
 rustup target list
 
+# autoremove(apt LinuxOS Ubuntu)
+sudo apt autoremove
+
+# apt list(LinuxOS Ubuntu)
+sudo apt list
+
+# update all(apt)
+sudo apt update && sudo apt full-upgrade -y
+
+# reboot(LinuxOS)
+sudo reboot
+
+# Reservation ends in a minute
+sudo shutdown -h 1
+
 # GPU live (nvidia-smi)
 watch -d -n 0.5 nvidia-smi
+
+# my account info
+whoami
 
 # hex view("rg -i <search>" | "grep -rni <search>")
 xxd -c 16 ./target/debug/{{PROJECT_NAME}} > ./target/debug/hex_print.txt
