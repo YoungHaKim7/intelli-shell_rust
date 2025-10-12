@@ -766,6 +766,15 @@ git tag {{tag-name}}
 # Create a new tag from a specific commit
 git tag {{tag-name}} {{commit-hash}}
 
+# kill PID
+kill -9 {{PID}}
+
+# kill program(PID)
+killall {{PROGRAM_PID}}
+
+# Search for ports you use
+lsof -i :{{PORT_No.}}
+
 # GPU watch NVIDIA
 nvidia-smi
 
