@@ -214,6 +214,9 @@ cargo watch -x 'run'
 # cargo watch(check & test & run)
 cargo watch -x check -x test -x run
 
+# (C) cmake && ninja
+cmake -D CMAKE_C_COMPILER=/opt/gcc-15/bin/gcc -G Ninja ..
+
 # (nightly linuxOS)clang sanitize(ASan=address / LSan=leak / TSan=thread / MSan=memory / UBSan=undefined)
 export RUSTFLAGS=-Zsanitizer={{SAN}} RUSTDOCFLAGS=-Zsanitizer={{SAN}}
 
