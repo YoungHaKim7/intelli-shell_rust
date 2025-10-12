@@ -220,6 +220,9 @@ cargo watch -x check -x test -x run
 # LinuxOS version check
 cat /etc/os-release
 
+# Folder to delete error files when release reaches end of life (EOL)
+cd /etc/apt/sources.list.d
+
 # (C) cmake && ninja
 cmake -D CMAKE_C_COMPILER=/opt/gcc-15/bin/gcc -G Ninja ..
 
@@ -235,6 +238,9 @@ export RUSTFLAGS=-Zsanitizer={{SAN}} RUSTDOCFLAGS=-Zsanitizer={{SAN}}
 # eza(tree) the number is depth
 eza -la -TL2
 
+# icons pretty print(tree)
+eza -la -TL3 --icons
+
 # find(fd)
 fd -g -H '.{{search_file}}*'
 
@@ -246,6 +252,9 @@ find . -type f -name "{{delete_file}}" -exec rm {} \;
 
 # find "search file"
 find . -type f -name "{{search_file}}"
+
+# search grep(find string)
+find . | grep -winr -C 4 "{{search_string}}"
 
 # Add all changes to the staging area, including deleted files
 git add -A
@@ -796,6 +805,9 @@ lsb_release -a
 # Search for ports you use
 lsof -i :{{PORT_No.}}
 
+# md4sum check
+md5sum {{SRC}}
+
 # GPU watch NVIDIA
 nvidia-smi
 
@@ -805,8 +817,14 @@ printf '\u{{uncode_hex}}\n'
 # the pwd command will tell you exactly what the current working directory is.
 pwd
 
+# search grep(find(rg) string)
+rg -i {{search_string}}
+
 # aarch64-apple-darwin / x86_64-unknown-linux-gnu
 rustup target list
+
+# sha1sum check
+sha1sum {{SRC}}
 
 # autoremove(apt LinuxOS Ubuntu)
 sudo apt autoremove
@@ -826,6 +844,12 @@ sudo shutdown -h 1
 # tree (tree)
 tree -L 2
 
+# Check my computer architecture(simple)
+uname
+
+# Check my computer architecture(detail)
+uname -a
+
 # GPU live (nvidia-smi)
 watch -d -n 0.5 nvidia-smi
 
@@ -834,13 +858,4 @@ whoami
 
 # hex view("rg -i <search>" | "grep -rni <search>")
 xxd -c 16 ./target/debug/{{PROJECT_NAME}} > ./target/debug/hex_print.txt
-
-# md4sum check
-md5sum {{SRC}}
-
-# sha1sum check
-sha1sum {{SRC}}
-
-# Folder to delete error files when release reaches end of life (EOL) 
-cd /etc/apt/sources.list.d 
 
