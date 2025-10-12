@@ -304,9 +304,6 @@ git branch {{branch-name}}
 # The git checkout command in Git serves multiple purposes related to navigating and manipulating the state of your repository. While git switch and git restore have largely replaced its functionality for switching branches and restoring files respectively, git checkout remains a valid and powerful command.
 git checkout
 
-# The git checkout command in Git serves multiple purposes related to navigating and manipulating the state of your repository. While git switch and git restore have largely replaced its functionality for switching branches and restoring files respectively, git checkout remains a valid and powerful command.
-git checkout 
-
 # Detach HEAD and switch to a specific commit
 git checkout --detach {{commit-hash}}
 
@@ -747,6 +744,9 @@ git tag {{tag-name}}
 
 # Create a new tag from a specific commit
 git tag {{tag-name}} {{commit-hash}}
+
+# aarch64-apple-darwin / x86_64-unknown-linux-gnu
+rustup target list
 
 # hex view("rg -i <search>" | "grep -rni <search>")
 xxd -c 16 ./target/debug/{{PROJECT_NAME}} > ./target/debug/hex_print.txt
