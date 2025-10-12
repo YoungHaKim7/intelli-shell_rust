@@ -757,3 +757,14 @@ rustup target list
 # hex view("rg -i <search>" | "grep -rni <search>")
 xxd -c 16 ./target/debug/{{PROJECT_NAME}} > ./target/debug/hex_print.txt
 
+# find & delete
+find . -type f -name "{{delete_file}}" -exec rm {} \;
+
+# find "search file"
+find . -type f -name "{{search_file}}"
+
+# find(fd) & delete
+fd -g -H '.{{search_file}}}*' -x rm {} \;
+
+# find(fd)
+fd -g -H '.{{search_file}}}*'
