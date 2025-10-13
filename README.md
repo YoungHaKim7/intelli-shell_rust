@@ -19,6 +19,7 @@
 # install[|🔝|](#link)
 
 - bash
+  - https://github.com/lasantosr/intelli-shell/blob/main/default_config.toml
 
 ```
 # For sh-compatible shells on Linux/macOS/Windows (Bash, Zsh, Fish, Nu, Git Bash)
@@ -28,6 +29,12 @@ curl -sSf https://raw.githubusercontent.com/lasantosr/intelli-shell/main/install
 .local/share/intelli-shell 
 $ ls
 bin/  storage.db3
+
+# To customize your configuration, copy this file to your user configuration directory or create a new one:
+# ~/.config/intelli-shell/config.toml (on Linux)
+# ~/Library/Application Support/org.IntelliShell.Intelli-Shell/config.toml (on macOS)
+# %APPDATA%\IntelliShell\Intelli-Shell\config\config.toml (on Windows)
+# $XDG_CONFIG_HOME/intelli-shell/config.toml (if XDG_CONFIG_HOME is set)
 
 ```
 
