@@ -91,7 +91,11 @@ intelli-shell import my_commands.bak
 
 - macOS에서 키 안 먹으면 `intelli-shell search -i git` 직접 쉘창에 입력해 주자 
 ```bash
+# i 뒤에 찾고 싶은거
 intelli-shell search -i git
+
+# 그냥 search mode
+intelli-shell search -i 
 ```
 
 - Bookmark `Ctrl`+`B`: When you've typed a command you want to save, this key opens a UI to bookmark it. The current text on your command line will be pre-filled as the command to be saved.
