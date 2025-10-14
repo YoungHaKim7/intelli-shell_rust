@@ -412,6 +412,9 @@ git config --global color.ui false
 # Set the default editor
 git config --global core.editor "editor"
 
+# Set core.editor in your Git config(vim default)
+git config --global core.editor "vim"
+
 # Set the default branch name
 git config --global init.defaultBranch main
 
