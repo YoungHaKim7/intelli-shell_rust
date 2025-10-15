@@ -7,7 +7,7 @@ MIRIFLAGS="-Zmiri-disable-stacked-borrows" cargo miri run
 # note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 RUST_BACKTRACE=1 cargo r
 
-# (detail) run with `RUST_BACKTRACE=full` environment variable to display a backtrace
+# Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
 RUST_BACKTRACE=full cargo r
 
 # the working directory
