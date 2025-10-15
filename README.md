@@ -83,6 +83,14 @@ intelli-shell export my_commands.bak
 intelli-shell import my_commands.bak
 ```
 
+- default 명령어'intelli-shell tldr fetch'
+
+```bas
+hThere are no stored commands yet!
+    - Try to bookmark some command with 'Ctrl + B'
+    - Or execute 'intelli-shell tldr fetch' to download a bunch of tldr's useful commands
+```
+
 # Core Hotkeys[|🔝|](#link)
 - https://lasantosr.github.io/intelli-shell/guide/basic_usage.html#core-hotkeys
 - By default, IntelliShell sets up several hotkeys. These are the primary ways you will interact with the tool.
