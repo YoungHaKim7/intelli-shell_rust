@@ -1,0 +1,777 @@
+# Clang Sanitize(ASan=address / LSan=leak / TSan=thread / MSan=memory / UBSan=undefined (Undefined Behavior)
+/usr/bin/clang-21 -g -fsanitize={{SAN}} -fno-omit-frame-pointer -c {{SOURCE}}
+
+# cargo miri
+MIRIFLAGS="-Zmiri-disable-stacked-borrows" cargo miri run
+
+# note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+RUST_BACKTRACE=1 cargo r
+
+# (detail) run with `RUST_BACKTRACE=full` environment variable to display a backtrace
+RUST_BACKTRACE=full cargo r
+
+# the working directory
+basename $(pwd)
+
+# cargo asm
+cargo asm {{PROJECT_NAME}}::{{METHOD}}
+
+# Check security vulnerabilities in dependencies
+cargo audit
+
+# Audit and suppress warnings for certain crates
+cargo audit --allow-warnings
+
+# Audit with a custom advisory database URL
+cargo audit --database {{url}}
+
+# Audit with a custom advisory database file
+cargo audit --db-file {{path}}
+
+# Audit and update the advisory database
+cargo audit --fetch
+
+# Audit with JSON output
+cargo audit --format=json
+
+# Audit ignoring certain advisories
+cargo audit --ignore {{advisory_id}}
+
+# Audit and display license information
+cargo audit --licenses
+
+# Audit a specific lockfile
+cargo audit --lockfile {{path_to_lockfile}}
+
+# Audit and generate a report in a specific format
+cargo audit --output {{file_path}}
+
+# Audit and check for informational advisories
+cargo audit --quiet
+
+# Audit and filter by severity level
+cargo audit --severity {{high|medium|low|info}}
+
+# Audit and display statistics
+cargo audit --stats
+
+# Audit and display target-specific vulnerabilities
+cargo audit --target {{target_triple}}
+
+# Audit and check for unmaintained packages
+cargo audit --unmaintained
+
+# Audit and display vulnerability details
+cargo audit --verbose
+
+# Audit and show only vulnerable crates
+cargo audit --vulnerable
+
+# final review(cargo check)
+cargo check --all-features --all-targets --all
+
+# final review(cargo clippy)
+cargo clippy --all-features --all-targets -- -D warnings
+
+# cargo clippy emit jsonfile(savefile : ./target/clippy.json)
+cargo clippy --message-format=json --all-features --all-targets -- -D warnings > target/clippy.json
+
+# macro show(cargo expand)
+cargo expand
+
+# cargo expand(test --lib)
+cargo expand --lib --tests
+
+# Format source code and print diff of changes
+cargo fmt -- --color=always
+
+# Format source code and print files that would be modified
+cargo fmt -- --emit=files
+
+# Format all packages in the workspace
+cargo fmt --all
+
+# final review(fmt)
+cargo fmt --all -- --check
+
+# Format source code with verbose output
+cargo fmt --verbose
+
+# Format source code only for specified package
+cargo fmt -p {{package_name}}
+
+# Format only the specified files
+cargo fmt {{file1}} {{file2}}
+
+# 8 thread test
+cargo miri nextest run -j8
+
+# target, test
+cargo miri run --target x86_64-unknown-linux-gnu
+
+# target tests
+cargo miri run --target {{TARGET}}
+
+# night miri test
+cargo miri test
+
+# final review(test nextest)
+cargo nextest run --all-features --no-fail-fast --workspace --no-capture
+
+# show print) A next-generation test runner for Rust.
+cargo nextest run --nocapture
+
+# (optimization)cargo run --release
+cargo run --release
+
+# (Nightly linuxOS)export RUSTFLAGS=-Zsanitizer={{SAN}} RUSTDOCFLAGS=-Zsanitizer={{SAN}}
+cargo run -Zbuild-std --target x86_64-unknown-linux-gnu
+
+# emit asm file
+cargo rustc -- --emit asm=target/{{PROJECT_NAME}}.s
+
+# emit llvm-ir file
+cargo rustc -- --emit llvm-ir=target/{{PROJECT_NAME}}.ll
+
+# emit hir file
+cargo rustc -- -Zunpretty=hir > target/{{PROJECT_NAME}}.hir
+
+# emit mir file
+cargo rustc -- -Zunpretty=mir > target/{{PROJECT_NAME}}.mir
+
+# optimized assembly
+cargo rustc --release -- --emit asm > target/{{PROJECT_NAME}}.s
+
+# Run all tests in the project
+cargo test
+
+# Run tests with output from test cases
+cargo test -- --nocapture
+
+# Run tests with all features enabled
+cargo test --all-features
+
+# Run all tests including benchmarks
+cargo test --bench
+
+# Run doctests only
+cargo test --doc
+
+# Run a single test by exact name
+cargo test --exact {{test_name}}
+
+# Run tests for examples
+cargo test --example {{example_name}}
+
+# Run tests and stop at first failure
+cargo test --fail-fast
+
+# Run tests with specific features enabled
+cargo test --features {{feature_names}}
+
+# Run tests and generate JSON output
+cargo test --format json
+
+# Run tests and ignore cached results
+cargo test --fresh
+
+# Run unit tests only (excluding doctests, examples, and benchmarks)
+cargo test --lib
+
+# Run tests with default features disabled
+cargo test --no-default-features
+
+# Run tests and ignore failures (continue on error)
+cargo test --no-fail-fast
+
+# Run tests but only show failed tests
+cargo test --quiet
+
+# Run tests and compile in release mode
+cargo test --release
+
+# Run tests with specific target triple
+cargo test --target {{target_triple}}
+
+# Run integration tests only
+cargo test --test {{integration_test_name}}
+
+# Run tests with a specific number of threads
+cargo test --test-threads={{num_threads}}
+
+# Run tests with verbose output
+cargo test --verbose
+
+# Run tests with unstable features
+cargo test -Z {{unstable_feature}}
+
+# Run tests in a specific package
+cargo test -p {{package_name}}
+
+# Run tests with specific pattern
+cargo test {{test_name}}
+
+# cargo watch(simple only run)
+cargo watch -x 'run'
+
+# cargo watch(check & test & run)
+cargo watch -x check -x test -x run
+
+# LinuxOS version check
+cat /etc/os-release
+
+# Folder to delete error files when release reaches end of life (EOL)
+cd /etc/apt/sources.list.d
+
+# (C) cmake && ninja
+cmake -D CMAKE_C_COMPILER=/opt/gcc-15/bin/gcc -G Ninja ..
+
+# Check Capacity
+df -h
+
+# unicode print
+echo -e '\u{{hexadecimal_digits_unicode_no}}'
+
+# (nightly linuxOS)clang sanitize(ASan=address / LSan=leak / TSan=thread / MSan=memory / UBSan=undefined)
+export RUSTFLAGS=-Zsanitizer={{SAN}} RUSTDOCFLAGS=-Zsanitizer={{SAN}}
+
+# eza(tree) the number is depth
+eza -la -TL2
+
+# icons pretty print(tree)
+eza -la -TL3 --icons
+
+# find(fd)
+fd -g -H '.{{search_file}}*'
+
+# find(fd) & delete
+fd -g -H '.{{search_file}}*' -x rm {} \;
+
+# find & delete
+find . -type f -name "{{delete_file}}" -exec rm {} \;
+
+# find "search file"
+find . -type f -name "{{search_file}}"
+
+# search grep(find string)
+find . | grep -winr -C 4 "{{search_string}}"
+
+# Add all changes to the staging area, including deleted files
+git add -A
+
+# Add all files to the staging area interactively
+git add -i
+
+# Add a file to the staging area with a message
+git add -p {{file}}
+
+# Add all files that have been modified
+git add -u
+
+# Add a file to the staging area
+git add {{file}}
+
+# Apply a patch file and add the changes to the index
+git apply --cached {{patch-file}}
+
+# Apply a patch file
+git apply {{patch-file}}
+
+#
+git bisect bad
+
+#
+git bisect good {{commit}}
+
+# Find commits that introduced or fixed a bug
+git bisect start
+
+# Show who changed what and when in a file
+git blame {{file}}
+
+# List all branches
+git branch
+
+# Set the upstream branch for a local branch
+git branch --set-upstream-to={{remote}}/{{branch}} {{local-branch}}
+
+# Unset the upstream branch for a local branch
+git branch --unset-upstream {{branch}}
+
+# Force delete a local branch
+git branch -D {{branch-name}}
+
+# List all local and remote-tracking branches
+git branch -a
+
+# List all branches with the last commit on each, including remote branches
+git branch -a -v
+
+# List all branches with the last commit on each, including remote branches and the upstream branch
+git branch -a -vv
+
+# Copy a branch to a new name
+git branch -c {{branch-name}} {{new-name}}
+
+# Delete a local branch
+git branch -d {{branch-name}}
+
+# Move a branch to a new name
+git branch -m {{branch-name}} {{new-name}}
+
+# Rename the current branch
+git branch -m {{new-name}}
+
+# Rename a specific branch
+git branch -m {{old-name}} {{new-name}}
+
+# List all remote branches
+git branch -r
+
+# List all branches with the last commit on each
+git branch -v
+
+# Show the tracking relationship between local and remote branches
+git branch -vv
+
+# Create a new branch
+git branch {{branch-name}}
+
+# The git checkout command in Git serves multiple purposes related to navigating and manipulating the state of your repository. While git switch and git restore have largely replaced its functionality for switching branches and restoring files respectively, git checkout remains a valid and powerful command.
+git checkout
+
+# Detach HEAD and switch to a specific commit
+git checkout --detach {{commit-hash}}
+
+# Create a new orphan branch
+git checkout --orphan {{branch-name}}
+
+#
+git checkout -b {{branch-name}} {{commit-hash}}
+
+# Create a new branch from a tag
+git checkout -b {{branch-name}} {{tag-name}}
+
+#
+git checkout {{commit-hash}}
+
+# Switch to a specific tag
+git checkout {{tag-name}}
+
+# Cherry-pick a commit without creating a new commit
+git cherry-pick --no-commit {{commit-hash}}
+
+# Cherry-pick a commit onto the current branch
+git cherry-pick {{commit-hash}}
+
+# Clean up untracked files and directories
+git clean -fd
+
+# Create a new repository from a bare template
+git clone --bare {{repository-url}} {{directory}}
+
+# Create a new repository from a bare repository
+git clone {{bare-repository-url}} {{directory}}
+
+# Clone a remote repository to your local machine
+git clone {{repository-url}}
+
+# Stage and commit all changes with a message
+git commit -am "Commit message"
+
+# Commit staged changes with a message
+git commit -m "Commit message"
+
+# Commit staged changes with a detailed message
+git commit -m "Subject line" -m "Detailed description"
+
+# Get a configuration option
+git config --get {{option}}
+
+# Get a global configuration option
+git config --global --get {{option}}
+
+# Enable color output
+git config --global color.ui auto
+
+# Disable color output
+git config --global color.ui false
+
+# Set the default editor
+git config --global core.editor "editor"
+
+# Set core.editor in your Git config(vim default)
+git config --global core.editor "vim"
+
+# Set the default branch name
+git config --global init.defaultBranch main
+
+# Set the default merge behavior
+git config --global merge.ff only
+
+# Set the default pull behavior
+git config --global pull.rebase false
+
+# Set the default push behavior
+git config --global push.default simple
+
+# Set the global user email
+git config --global user.email "your.email@example.com"
+
+# Set the global user name
+git config --global user.name "Your Name"
+
+# Set a global configuration option
+git config --global {{option}} {{value}}
+
+# List all configuration options
+git config --list
+
+# Set the user email for a repository
+git config user.email "your.email@example.com"
+
+# Set the user name for a repository
+git config user.name "Your Name"
+
+# Set a configuration option
+git config {{option}} {{value}}
+
+# Show changes in a file between the working directory and the index
+git diff -- {{file}}
+
+# Show changes in a file between the index and the most recent commit
+git diff --cached -- {{file}}
+
+# Show the changes between the index and a specific commit
+git diff --cached {{commit}}
+
+# Show differences between two branches
+git diff {{branch1}} {{branch2}}
+
+# Show differences between two commits
+git diff {{commit1}} {{commit2}}
+
+# Show changes in a file between two commits
+git diff {{commit1}} {{commit2}} -- {{file}}
+
+# Show the changes between the working directory and a specific commit
+git diff {{commit}}
+
+# Fetch changes from a remote repository
+git fetch {{remote}}
+
+# Create a patch file for a range of commits
+git format-patch {{commit1}}..{{commit2}}
+
+# Create a patch file for a commit
+git format-patch {{commit}}
+
+# Show the commit history for a specific directory
+git log -- {{directory}}
+
+# Show the commit history for a specific author
+git log --author={{author}}
+
+# Show the commit history for a specific file
+git log --follow {{file}}
+
+# Show the commit history with a graph of branches
+git log --graph --full-history --all --color
+
+# Show the commit history with a graph of branches and merges
+git log --graph --oneline
+
+# Show the commit history for commits that match a regular expression
+git log --grep="search-pattern"
+
+# Show the commit history in a compact format
+git log --oneline
+
+# Show the commit history in a custom format
+git log --pretty=format:"%h - %an, %ar : %s"
+
+# Show the commit history for a specific time period
+git log --since="2023-01-01" --until="2023-12-31"
+
+# Show the commit history for a specific function in a file
+git log -L :{{function-name}}:{{file}}
+
+# Show the commit history for a specific line in a file
+git log -L {{start-line}},{{end-line}}:{{file}}
+
+# Show the commit history for commits that changed a specific string
+git log -S "search-string"
+
+# Continue a merge after resolving conflicts
+git merge --continue
+
+# Edit the merge message
+git merge --edit
+
+# Merge a branch into the current branch and create a merge commit
+git merge --no-ff -m "Merge message" {{branch-name}}
+
+# Merge a branch without creating a merge commit
+git merge --no-ff {{branch-name}}
+
+# Squash a branch into a single commit
+git merge --squash {{branch-name}}
+
+# Merge a branch into the current branch
+git merge {{branch-name}}
+
+# Check if a specific commit is an ancestor of another commit
+git merge-base --is-ancestor {{commit1}} {{commit2}}
+
+# Find the common ancestor of two commits
+git merge-base {{commit1}} {{commit2}}
+
+# Move or rename a file
+git mv {{old-file}} {{new-file}}
+
+# Pull changes from a remote repository and rebase them
+git pull --rebase {{remote}} {{branch}}
+
+# Pull changes from a remote repository and merge them
+git pull {{remote}} {{branch}}
+
+# Push all branches and set the upstream branch for each
+git push --all --set-upstream {{remote}}
+
+# Push all branches to a remote repository
+git push --all {{remote}}
+
+# Force push to a remote repository
+git push --force {{remote}} {{branch}}
+
+# Push the current branch and set the upstream branch, even if it already exists
+git push --set-upstream {{remote}} {{branch}}
+
+# Push the current branch to a remote repository
+git push -u {{remote}} {{branch}}
+
+#
+git push {{remote}} --delete {{branch-name}}
+
+# Delete a remote branch
+git push {{remote}} --delete {{branch}}
+
+# Delete a remote tag
+git push {{remote}} --delete {{tag-name}}
+
+# Force push a tag to a remote repository
+git push {{remote}} --force {{tag-name}}
+
+# Push changes to a remote repository
+git push {{remote}} {{branch}}
+
+# Push a specific tag to a remote repository
+git push {{remote}} {{tag-name}}
+
+# Edit the current commit in a rebase
+git rebase --edit
+
+# Rebase the current branch onto another branch, preserving the current commit and all previous commits
+git rebase --onto {{new-base}} HEAD~{{n}}
+
+# Rebase the current branch onto another branch, preserving the current commit
+git rebase --onto {{new-base}} {{old-base}} HEAD
+
+# Rebase the current branch onto another branch, ignoring the current commit
+git rebase --onto {{new-base}} {{old-base}} {{branch}}
+
+# Rebase the current branch onto another branch, preserving the current commit and all previous commits, but fixing the first n commits
+git rebase -i --autosquash --exec "git commit --amend --no-edit" HEAD~{{n}}
+
+# Rebase the current branch onto another branch, preserving the current commit and all previous commits, but dropping the first n commits and adding a new commit
+git rebase -i --autosquash --exec "git commit --amend --no-edit" HEAD~{{n}}~1
+
+# Rebase the current branch onto another branch, preserving the current commit and all previous commits, but squashing the first n commits and adding a new commit
+git rebase -i --autosquash --exec "git commit --amend --no-edit" HEAD~{{n}}~2
+
+# Rebase the current branch onto another branch, preserving the current commit and all previous commits, but squashing the first n commits
+git rebase -i --autosquash HEAD~{{n}}
+
+# Rebase the current branch onto another branch, preserving the current commit and all previous commits, but dropping the first n commits
+git rebase -i --onto {{new-base}} HEAD~{{n}}
+
+# Rebase the current branch onto another branch, preserving the current commit and all previous commits, but editing the first n commits
+git rebase -i HEAD~{{n}}
+
+# Rebase the current branch onto another branch, preserving merges and reordering commits
+git rebase -i {{branch-name}}
+
+# Rebase the current branch onto another branch, preserving merges
+git rebase -p {{branch-name}}
+
+# Rebase the current branch onto another branch
+git rebase {{branch-name}}
+
+# Show the reflog for all branches
+git reflog show --all
+
+# Show the reflog for a specific branch
+git reflog show {{branch}}
+
+# List all remote repositories
+git remote -v
+
+# Add a remote repository
+git remote add {{name}} {{url}}
+
+# Remove a remote repository
+git remote remove {{name}}
+
+# Rename a remote repository
+git remote rename {{old-name}} {{new-name}}
+
+# Remove all files from the staging area
+git reset HEAD
+
+# Remove a file from the staging area
+git reset HEAD {{file}}
+
+# Reset the index to a specific commit
+git reset {{commit}}
+
+# Restore a file to the state in a specific commit
+git restore --source={{commit}} {{file}}
+
+# Restore a file to the state in the staging area
+git restore --staged {{file}}
+
+# Restore a file to the state in the most recent commit
+git restore {{file}}
+
+# Count the number of commits
+git rev-list --count HEAD
+
+# Show the upstream branch for a local branch
+git rev-parse --abbrev-ref {{branch}}@{upstream}
+
+# Show the hash of the current commit
+git rev-parse --short HEAD
+
+# Show the most recent commit
+git rev-parse HEAD
+
+# Remove a file from the working directory and staging area
+git rm {{file}}
+
+# Show the changes introduced in a specific commit
+git show {{commit-hash}}
+
+# Show the changes made to a file in a specific commit
+git show {{commit-hash}}:{{file}}
+
+# Temporarily save changes in the working directory
+git stash
+
+# Apply a specific stash
+git stash apply stash@{n}
+
+# Drop a specific stash
+git stash drop stash@{n}
+
+# Apply the most recent stash
+git stash pop
+
+# Create a stash with a message
+git stash save "Stash message"
+
+# Show the repository status with branch information
+git status --branch
+
+# Show the repository status with ignored files
+git status --ignored
+
+# Show the repository status in a short format
+git status --short
+
+# Show the repository status with untracked files
+git status --untracked-files
+
+# Create and switch to a new branch
+git switch -c {{branch-name}}
+
+# Switch to a different branch
+git switch {{branch-name}}
+
+# Create a tag with a message
+git tag -a {{tag-name}} -m "Tag message"
+
+# Create a tag with a message from a specific commit
+git tag -a {{tag-name}} -m "Tag message" {{commit-hash}}
+
+# Delete a tag
+git tag -d {{tag-name}}
+
+# List all tags with details
+git tag -n
+
+# Create a tag for the current commit
+git tag {{tag-name}}
+
+# Create a new tag from a specific commit
+git tag {{tag-name}} {{commit-hash}}
+
+# IP in use now
+ip a
+
+# kill PID
+kill -9 {{PID}}
+
+# kill program(PID)
+killall {{PROGRAM_PID}}
+
+# make symbol link
+ln -s {{source_link}} {{link_name}}
+
+# Linux Version check
+lsb_release -a
+
+# Search for ports you use
+lsof -i :{{PORT_No.}}
+
+# md4sum check
+md5sum {{SRC}}
+
+# printf (Unicode(hex))
+printf '\u{{uncode_hex}}\n'
+
+# search grep(find(rg) string)
+rg -i {{search_string}}
+
+# aarch64-apple-darwin / x86_64-unknown-linux-gnu
+rustup target list
+
+# sha1sum check
+sha1sum {{SRC}}
+
+# autoremove(apt LinuxOS Ubuntu)
+sudo apt autoremove
+
+# apt list(LinuxOS Ubuntu)
+sudo apt list
+
+# update all(apt)
+sudo apt update && sudo apt full-upgrade -y
+
+# reboot(LinuxOS)
+sudo reboot
+
+# Reservation ends in a minute
+sudo shutdown -h 1
+
+# tree (tree)
+tree -L 2
+
+# Check my computer architecture(detail)
+uname -a
+
+# GPU live (nvidia-smi)
+watch -d -n 0.5 nvidia-smi
+
+# hex view("rg -i <search>" | "grep -rni <search>")
+xxd -c 16 ./target/debug/{{PROJECT_NAME}} > ./target/debug/hex_print.txt
+
