@@ -1,6 +1,9 @@
 # Clang Sanitize(ASan=address / LSan=leak / TSan=thread / MSan=memory / UBSan=undefined (Undefined Behavior)
 /usr/bin/clang-21 -g -fsanitize={{SAN}} -fno-omit-frame-pointer -c {{SOURCE}}
 
+# rust update stable ver.
+rustup update stable
+
 # The rust-analyzer binary can be installed via "rustup component add"
 rustup component add rust-analyzer
 
