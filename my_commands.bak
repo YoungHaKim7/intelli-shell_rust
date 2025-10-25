@@ -1,6 +1,12 @@
 # Clang Sanitize(ASan=address / LSan=leak / TSan=thread / MSan=memory / UBSan=undefined (Undefined Behavior)
 /usr/bin/clang-21 -g -fsanitize={{SAN}} -fno-omit-frame-pointer -c {{SOURCE}}
 
+# (show)installed toolchains & active toolchain
+rustup show
+
+# uninstalling toolchain(remove)
+rustup toolchain remove {{UNINSTALLING_TOOLCHAIN}}
+
 # rust update stable ver.
 rustup update stable
 
