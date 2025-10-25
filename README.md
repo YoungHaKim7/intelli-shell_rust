@@ -84,7 +84,9 @@ intelli-shell import my_commands.bak
 ```
 
 - default 명령어
-  - `intelli-shell tldr fetch`
+  ```
+  intelli-shell tldr fetch
+  ```
 
 ```bas
 There are no stored commands yet!
