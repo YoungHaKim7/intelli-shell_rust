@@ -1,6 +1,18 @@
 # Clang Sanitize(ASan=address / LSan=leak / TSan=thread / MSan=memory / UBSan=undefined (Undefined Behavior)
 /usr/bin/clang-21 -g -fsanitize={{SAN}} -fno-omit-frame-pointer -c {{SOURCE}}
 
+# cargo build(nightly)
+cargo +nightly build
+
+# rustc(nightly)
+rustc +nightly ./src/main.rs
+
+# stable setting(rust)
+rustup default stable
+
+# nightly setting(rust)
+rustup default nightly
+
 # (show)installed toolchains & active toolchain
 rustup show
 
