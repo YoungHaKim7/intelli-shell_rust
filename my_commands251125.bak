@@ -1,14 +1,38 @@
 # Clang Sanitize(ASan=address / LSan=leak / TSan=thread / MSan=memory / UBSan=undefined (Undefined Behavior)
 /usr/bin/clang-21 -g -fsanitize={{SAN}} -fno-omit-frame-pointer -c {{SOURCE}}
 
+# alacriity(Open in current folder)
+alacritty --working-directory (pwd)
+
+# --target x86_64 test(cargo test)
+cargo t -- --nocapture -Zbuild-std --target x86_64-unknown-linux-gnu
+
+# cargo build(nightly)
+cargo +nightly build
+
+# rustc(nightly)
+rustc +nightly ./src/main.rs
+
+# stable setting(rust)
+rustup default stable
+
+# nightly setting(rust)
+rustup default nightly
+
+# (show)installed toolchains & active toolchain
+rustup show
+
+# uninstalling toolchain(remove)
+rustup toolchain remove {{UNINSTALLING_TOOLCHAIN}}
+
+# rust update stable ver.
+rustup update stable
+
+# The rust-analyzer binary can be installed via "rustup component add"
+rustup component add rust-analyzer
+
 # cargo miri
 MIRIFLAGS="-Zmiri-disable-stacked-borrows" cargo miri run
-
-# note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
-RUST_BACKTRACE=1 cargo r
-
-# Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
-RUST_BACKTRACE=full cargo r
 
 # the working directory
 basename $(pwd)
@@ -82,6 +106,9 @@ cargo expand
 # cargo expand(test --lib)
 cargo expand --lib --tests
 
+# Format all source code in the project
+cargo fmt
+
 # Format source code and print diff of changes
 cargo fmt -- --color=always
 
@@ -93,6 +120,9 @@ cargo fmt --all
 
 # final review(fmt)
 cargo fmt --all -- --check
+
+# Format source code and check if formatting is needed
+cargo fmt --check
 
 # Format source code with verbose output
 cargo fmt --verbose
@@ -268,6 +298,9 @@ git add -p {{file}}
 # Add all files that have been modified
 git add -u
 
+# Add all changes to the staging area
+git add .
+
 # Add a file to the staging area
 git add {{file}}
 
@@ -282,6 +315,9 @@ git bisect bad
 
 #
 git bisect good {{commit}}
+
+# End a bisect session
+git bisect reset
 
 # Find commits that introduced or fixed a bug
 git bisect start
@@ -364,6 +400,9 @@ git cherry-pick --no-commit {{commit-hash}}
 # Cherry-pick a commit onto the current branch
 git cherry-pick {{commit-hash}}
 
+# Clean up untracked files
+git clean
+
 # Clean up untracked files and directories
 git clean -fd
 
@@ -375,6 +414,9 @@ git clone {{bare-repository-url}} {{directory}}
 
 # Clone a remote repository to your local machine
 git clone {{repository-url}}
+
+# Amend the last commit
+git commit --amend
 
 # Stage and commit all changes with a message
 git commit -am "Commit message"
@@ -436,6 +478,9 @@ git config user.name "Your Name"
 # Set a configuration option
 git config {{option}} {{value}}
 
+# Show differences between the working directory and the staging area
+git diff
+
 # Show changes in a file between the working directory and the index
 git diff -- {{file}}
 
@@ -444,6 +489,12 @@ git diff --cached -- {{file}}
 
 # Show the changes between the index and a specific commit
 git diff --cached {{commit}}
+
+# Show differences between the staging area and the most recent commit
+git diff --staged
+
+# Show the changes between the working directory and the index
+git diff HEAD
 
 # Show differences between two branches
 git diff {{branch1}} {{branch2}}
@@ -457,6 +508,9 @@ git diff {{commit1}} {{commit2}} -- {{file}}
 # Show the changes between the working directory and a specific commit
 git diff {{commit}}
 
+# Fetch changes from all remote repositories
+git fetch --all
+
 # Fetch changes from a remote repository
 git fetch {{remote}}
 
@@ -465,6 +519,12 @@ git format-patch {{commit1}}..{{commit2}}
 
 # Create a patch file for a commit
 git format-patch {{commit}}
+
+# Initialize a new Git repository in the current directory
+git init
+
+# Show the commit history
+git log
 
 # Show the commit history for a specific directory
 git log -- {{directory}}
@@ -493,6 +553,9 @@ git log --pretty=format:"%h - %an, %ar : %s"
 # Show the commit history for a specific time period
 git log --since="2023-01-01" --until="2023-12-31"
 
+# Show the commit history with statistics
+git log --stat
+
 # Show the commit history for a specific function in a file
 git log -L :{{function-name}}:{{file}}
 
@@ -501,6 +564,9 @@ git log -L {{start-line}},{{end-line}}:{{file}}
 
 # Show the commit history for commits that changed a specific string
 git log -S "search-string"
+
+# Abort a merge in progress
+git merge --abort
 
 # Continue a merge after resolving conflicts
 git merge --continue
@@ -547,6 +613,9 @@ git push --force {{remote}} {{branch}}
 # Push the current branch and set the upstream branch, even if it already exists
 git push --set-upstream {{remote}} {{branch}}
 
+# Push tags to a remote repository
+git push --tags
+
 # Push the current branch to a remote repository
 git push -u {{remote}} {{branch}}
 
@@ -568,6 +637,12 @@ git push {{remote}} {{branch}}
 # Push a specific tag to a remote repository
 git push {{remote}} {{tag-name}}
 
+# Abort a rebase in progress
+git rebase --abort
+
+# Continue a rebase after resolving conflicts
+git rebase --continue
+
 # Edit the current commit in a rebase
 git rebase --edit
 
@@ -579,6 +654,9 @@ git rebase --onto {{new-base}} {{old-base}} HEAD
 
 # Rebase the current branch onto another branch, ignoring the current commit
 git rebase --onto {{new-base}} {{old-base}} {{branch}}
+
+# Skip the current commit in a rebase
+git rebase --skip
 
 # Rebase the current branch onto another branch, preserving the current commit and all previous commits, but fixing the first n commits
 git rebase -i --autosquash --exec "git commit --amend --no-edit" HEAD~{{n}}
@@ -607,6 +685,9 @@ git rebase -p {{branch-name}}
 # Rebase the current branch onto another branch
 git rebase {{branch-name}}
 
+# Show the reflog for the current branch
+git reflog
+
 # Show the reflog for all branches
 git reflog show --all
 
@@ -624,6 +705,12 @@ git remote remove {{name}}
 
 # Rename a remote repository
 git remote rename {{old-name}} {{new-name}}
+
+# Reset the working directory to the most recent commit
+git reset --hard
+
+# Reset the working directory to a specific commit
+git reset --hard {{commit}}
 
 # Remove all files from the staging area
 git reset HEAD
@@ -658,6 +745,9 @@ git rev-parse HEAD
 # Remove a file from the working directory and staging area
 git rm {{file}}
 
+# Show the changes introduced in the most recent commit
+git show
+
 # Show the changes introduced in a specific commit
 git show {{commit-hash}}
 
@@ -670,14 +760,23 @@ git stash
 # Apply a specific stash
 git stash apply stash@{n}
 
+# Clear all stashes
+git stash clear
+
 # Drop a specific stash
 git stash drop stash@{n}
+
+# List all stashes
+git stash list
 
 # Apply the most recent stash
 git stash pop
 
 # Create a stash with a message
 git stash save "Stash message"
+
+# Check the status of your working directory and staging area
+git status
 
 # Show the repository status with branch information
 git status --branch
@@ -691,11 +790,17 @@ git status --short
 # Show the repository status with untracked files
 git status --untracked-files
 
+# Switch to the previous branch
+git switch -
+
 # Create and switch to a new branch
 git switch -c {{branch-name}}
 
 # Switch to a different branch
 git switch {{branch-name}}
+
+# List all tags
+git tag
 
 # Create a tag with a message
 git tag -a {{tag-name}} -m "Tag message"
@@ -736,8 +841,14 @@ lsof -i :{{PORT_No.}}
 # md4sum check
 md5sum {{SRC}}
 
+# GPU watch NVIDIA
+nvidia-smi
+
 # printf (Unicode(hex))
 printf '\u{{uncode_hex}}\n'
+
+# the pwd command will tell you exactly what the current working directory is.
+pwd
 
 # search grep(find(rg) string)
 rg -i {{search_string}}
@@ -766,11 +877,17 @@ sudo shutdown -h 1
 # tree (tree)
 tree -L 2
 
+# Check my computer architecture(simple)
+uname
+
 # Check my computer architecture(detail)
 uname -a
 
 # GPU live (nvidia-smi)
 watch -d -n 0.5 nvidia-smi
+
+# my account info
+whoami
 
 # hex view("rg -i <search>" | "grep -rni <search>")
 xxd -c 16 ./target/debug/{{PROJECT_NAME}} > ./target/debug/hex_print.txt
