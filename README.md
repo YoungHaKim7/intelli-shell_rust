@@ -12,6 +12,15 @@
 
 <hr />
 
+# codeberg-cli
+
+- macOS 토큰 저장 경로
+```bash
+Library/Application Support/berg-cli
+$ ls
+TOKEN
+```
+
 # intelli-shell_rust[|🔝|](#link)
 - Like IntelliSense, but for shells 
   - https://github.com/lasantosr/intelli-shell
