@@ -1,3 +1,15 @@
+# Package Install(openSUSE)
+sudo zypper in {{PACKAGE}}
+
+# Package Remove(openSUSE)
+sudo zypper rm {{PACKAGE}}
+
+# Package Update(openSUSE)
+sudo zypper dup
+
+# Package Search(openSUSE)
+sudo zypper se {{PACKAGE}}
+
 # Clang Sanitize(ASan=address / LSan=leak / TSan=thread / MSan=memory / UBSan=undefined (Undefined Behavior)
 /usr/bin/clang-21 -g -fsanitize={{SAN}} -fno-omit-frame-pointer -c {{SOURCE}}
 
