@@ -10,6 +10,12 @@ sudo zypper dup
 # Package Search(openSUSE)
 sudo zypper se {{PACKAGE}}
 
+# restart NetworkManager(openSUSE)
+sudo systemctl restart NetworkManager
+
+# This will stop the updater applet from automatically running PackageKit in the background.(openSUSE)
+sudo systemctl stop packagekit
+
 # Clang Sanitize(ASan=address / LSan=leak / TSan=thread / MSan=memory / UBSan=undefined (Undefined Behavior)
 /usr/bin/clang-21 -g -fsanitize={{SAN}} -fno-omit-frame-pointer -c {{SOURCE}}
 
