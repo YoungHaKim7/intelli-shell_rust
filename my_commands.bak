@@ -7,6 +7,9 @@ sudo zypper rm {{PACKAGE}}
 # Package Update(openSUSE)
 sudo zypper dup
 
+# Refresh Repositories & Upgrade System (Tumbleweed/Rolling)(openSUSE)
+sudo zypper refresh && sudo zypper dup
+
 # Package Search(openSUSE)
 sudo zypper se {{PACKAGE}}
 
