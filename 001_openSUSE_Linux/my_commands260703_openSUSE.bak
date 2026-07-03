@@ -1,3 +1,6 @@
+# Korean settings(fcitx5) - Setting up non-English keyboard input
+fcitx5-configtool
+
 # Clang Sanitize(ASan=address / LSan=leak / TSan=thread / MSan=memory / UBSan=undefined (Undefined Behavior)
 /usr/bin/clang-21 -g -fsanitize={{SAN}} -fno-omit-frame-pointer -c {{SOURCE}}
 
