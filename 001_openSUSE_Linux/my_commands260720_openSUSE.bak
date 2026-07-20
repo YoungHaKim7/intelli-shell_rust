@@ -1,6 +1,3 @@
-# To open Ghostty directly in your current folder from a terminal or command prompt
-ghostty --working-directory=/path/to/folder
-
 # Clang Sanitize(ASan=address / LSan=leak / TSan=thread / MSan=memory / UBSan=undefined (Undefined Behavior)
 /usr/bin/clang-21 -g -fsanitize={{SAN}} -fno-omit-frame-pointer -c {{SOURCE}}
 
@@ -264,6 +261,9 @@ find . -type f -name "{{search_file}}"
 
 # search grep(find string)
 find . | grep -winr -C 4 "{{search_string}}"
+
+# To open Ghostty directly in your current folder from a terminal or command prompt
+ghostty --working-directory=/path/to/folder
 
 # Add all changes to the staging area, including deleted files
 git add -A
