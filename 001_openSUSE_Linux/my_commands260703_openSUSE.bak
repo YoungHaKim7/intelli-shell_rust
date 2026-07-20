@@ -1,3 +1,6 @@
+# To open Ghostty directly in your current folder from a terminal or command prompt
+ghostty --working-directory=/path/to/folder
+
 # Clang Sanitize(ASan=address / LSan=leak / TSan=thread / MSan=memory / UBSan=undefined (Undefined Behavior)
 /usr/bin/clang-21 -g -fsanitize={{SAN}} -fno-omit-frame-pointer -c {{SOURCE}}
 
