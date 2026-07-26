@@ -1,6 +1,3 @@
-# cargo build & head (10) lines
-cargo build 2>&1 | head -10
-
 # Clang Sanitize(ASan=address / LSan=leak / TSan=thread / MSan=memory / UBSan=undefined (Undefined Behavior)
 /usr/bin/clang-21 -g -fsanitize={{SAN}} -fno-omit-frame-pointer -c {{SOURCE}}
 
@@ -69,6 +66,9 @@ cargo audit --verbose
 
 # Audit and show only vulnerable crates
 cargo audit --vulnerable
+
+# cargo build & head (10) lines
+cargo build 2>&1 | head -10
 
 # final review(cargo check)
 cargo check --all-features --all-targets --all
