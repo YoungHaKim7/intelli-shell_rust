@@ -1,6 +1,3 @@
-# PORT no. (lsof -t -i:3000/  ex) 3000 port kill))
-kill -9 $(lsof -t -i:PORT_NO)
-
 # Clang Sanitize(ASan=address / LSan=leak / TSan=thread / MSan=memory / UBSan=undefined (Undefined Behavior)
 /usr/bin/clang-21 -g -fsanitize={{SAN}} -fno-omit-frame-pointer -c {{SOURCE}}
 
@@ -729,6 +726,9 @@ git tag {{tag-name}} {{commit-hash}}
 
 # IP in use now
 ip a
+
+# PORT no. (lsof -t -i:3000/  ex) 3000 port kill))
+kill -9 $(lsof -t -i:PORT_NO)
 
 # kill PID
 kill -9 {{PID}}
